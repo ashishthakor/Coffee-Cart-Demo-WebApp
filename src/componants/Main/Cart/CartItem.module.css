@@ -1,0 +1,19 @@
+td {
+  padding: 0 1rem;
+}
+.btn {
+  font-size: medium;
+  font-weight: 700;
+  border-radius: 1rem;
+  padding: 0 14px;
+  background-color: transparent;
+  margin: 0 0 0 0.5rem;
+}
+.btn:hover {
+  transition: ease 0.5s;
+  transform: scale(1.1);
+}
+.close:hover {
+  transition: ease 0.5s;
+  transform: scale(1.5);
+}

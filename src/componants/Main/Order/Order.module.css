@@ -1,0 +1,25 @@
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .total {
+    margin: 1rem auto 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    background-color: #f13c20;
+    width: 15rem;
+    height: 3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  .order {
+    margin-right: 15%;
+    float: right;
+    cursor: pointer;
+  }
+  

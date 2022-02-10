@@ -1,0 +1,14 @@
+.gridContainer {
+  margin: 50px;
+  /* padding: 10px; */
+  display: flex;
+  grid-template-columns: auto auto auto;
+  grid-gap: 2rem;
+  padding-bottom: 2.5rem;
+  /* margin-bottom: 2rem; */
+  /* justify-content: space-around; */
+  justify-content: space-around;
+
+  /* flex-wrap: nowrap | wrap | wrap-reverse; */
+  flex-wrap: wrap;
+}

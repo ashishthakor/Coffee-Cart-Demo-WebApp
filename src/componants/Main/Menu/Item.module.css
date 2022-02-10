@@ -1,0 +1,103 @@
+.gridItem {
+  margin: auto;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* text-align: center; */
+  height: auto;
+  width: 381px;
+
+  border-radius: 5px;
+  box-shadow: 2px 3px 4px 5px rgba(12, 12, 12, 0.2);
+}
+.gridItem:hover {
+  transform: scale(1.1);
+  transition: ease 0.5s;
+}
+
+.imgContainer {
+  height: 250px;
+  width: 379px;
+}
+
+img {
+  height: inherit;
+  border-radius: 5px;
+  width: inherit;
+}
+.item {
+  display: flex;
+}
+
+.itemHeading {
+  width: inherit;
+  /* text-align: center; */
+  font-family: 'National 2 Condensed';
+  /* font-style: normal; */
+  font-weight: 700;
+  font-size: 1rem;
+  /* line-height: 25px; */
+  /* letter-spacing: 0.4rem; */
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.itemPrice {
+  font-weight: 700;
+  flex: 1;
+}
+
+.itemData {
+  display: flex;
+  margin-top: 0.4rem;
+}
+.childData {
+  justify-content: space-between;
+  flex: 1;
+}
+
+input {
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  width: 3rem;
+  padding-left: 0.5rem;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px orange;
+}
+
+.addToCart {
+  color: white;
+  display: flex;
+  /* background-color: #e85a4f; */
+  background-color: #ff0000;
+  /* justify-content: center; */
+  border-radius: 0.5rem;
+  padding: 0 0.6rem;
+  cursor: pointer;
+  margin: 0.5rem;
+  font-weight: 700;
+  font-size: 20px;
+}
+.addToCart:hover {
+  cursor: pointer;
+}
+/* @media only screen and (max-width: 425px) {
+  .gridItem {
+    width: 350px;
+  }
+  .imgContainer {
+    width: 348px;
+  }
+} */
+
+@media only screen and (max-width: 390px) {
+  .gridItem {
+    width: 300px;
+  }
+  .imgContainer {
+    width: 298px;
+  }
+}

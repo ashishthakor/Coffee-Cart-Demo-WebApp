@@ -1,0 +1,37 @@
+nav {
+  /* background-color: #eae7dc; */
+  background-color: #88bdbc;
+  box-sizing: border-box;
+  color: white;
+}
+.rightStyle {
+  position: absolute;
+  /* top: 0px; */
+  right: 10px;
+  margin-left: 10px;
+  font-size: 30px;
+}
+.brandName {
+  margin: 10px;
+}
+ul li {
+  font-size: 25px;
+  cursor: pointer;
+  padding-right: 25px;
+}
+.links {
+  color: black;
+  margin-left: 0.5rem;
+}
+.links:hover {
+  transition: ease 0.4s;
+  color: white;
+  border-bottom: 0.5rem solid yellow;
+  /* border-radius: 1rem; */
+}
+.selected {
+  color: white;
+}
+.cartLogo {
+  font-weight: 900;
+}
