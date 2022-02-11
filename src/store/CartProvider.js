@@ -9,7 +9,6 @@ const defaultCartState = {
 
 const cartReducer = (state, action) => {
   if (action.type === 'ADD-TO-CART') {
-    // console.log(action.payload.quantity);
     const updatedTotalAmount =
       state.totalAmount + action.payload.price * action.payload.quantity;
 
@@ -62,10 +61,10 @@ const cartReducer = (state, action) => {
     const updatedItems = state.items.filter(
       (item) => item.id !== action.payload.id
     );
-    // console.log(updatedItems);
+
     const updatedTotalAmount =
       state.totalAmount - action.payload.amount * action.payload.price;
-    // console.log(updatedTotalAmount);
+
     return {
       items: updatedItems,
       totalAmount: updatedTotalAmount,
@@ -79,7 +78,7 @@ const cartReducer = (state, action) => {
       totalAmount: 0,
     };
   }
-  return defaultCartState;
+  // return defaultCartState;
 };
 const CartProvider = (props) => {
   const [cartState, dispatchCartAction] = useReducer(
@@ -108,12 +107,9 @@ const CartProvider = (props) => {
     deleteIndivisualItem: deleteItem,
     clearCartData: clearCart,
   };
-  // localStorage.setItem('cartItem', cartContext.items);
+
   localStorage.setItem('cartItem', JSON.stringify(cartContext.items));
   localStorage.setItem('totalAmount', cartContext.totalAmount);
-
-  // localStorage.removeItem('cartItem');
-  // localStorage.removeItem('totalAmount');
   return (
     <>
       <CartContext.Provider value={cartContext}>

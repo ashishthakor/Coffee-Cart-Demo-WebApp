@@ -13,11 +13,6 @@ const Item = (props) => {
 
   const ingredients = props.recipe.split(',');
 
-  // ingredients.map((ing) => {
-  //   console.log(ing);
-  // });
-  // console.log(ingredients);
-
   const ing = (
     <>
       <div>
@@ -46,16 +41,16 @@ const Item = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(amountOfInput.current.value);
+
     const enteredQuantity = +amountOfInput.current.value.trim();
-    // console.log(enteredQuantity);
+
     if (enteredQuantity < 1) {
       alert('Please Enter Valid Anount of Quantity');
       setAmountIsValid(false);
       return;
     }
     setAmountIsValid(true);
-    // console.log(enteredQuantity);
+
     addToCartHandler(enteredQuantity);
   };
   return (
@@ -98,13 +93,6 @@ const Item = (props) => {
           </div>
         </center>
       </div>
-      {/* <div className={classes.gridItem}>2</div>
-      <div className={classes.gridItem}>3</div>
-      <div className={classes.gridItem}>4</div>
-      <div className={classes.gridItem}>5</div>
-      <div className={classes.gridItem}>6</div>
-      <div className={classes.gridItem}>7</div>
-      <div className={classes.gridItem}>8</div> */}
     </>
   );
 };

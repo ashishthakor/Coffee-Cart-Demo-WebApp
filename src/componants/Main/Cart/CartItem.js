@@ -1,19 +1,7 @@
 import classes from './CartItem.module.css';
-import {
-  CloseOutlined,
-  PlusCircleOutlined,
-  MinusCircleOutlined,
-} from '@ant-design/icons';
-import { useContext } from 'react';
-import CartContext from '../../../store/cartContext';
+import { CloseOutlined } from '@ant-design/icons';
+
 const CartItem = (props) => {
-  // const price = `$${props.price.toFixed(2)}`;
-  // console.log(props.id);
-  // console.log(props.name);
-  // console.log(props.quantity);
-  // console.log(props.price);
-  const cartCtx = useContext(CartContext);
-  // console.log(cartCtx);
   const itemPrice = props.quantity * props.price;
   return (
     <>
@@ -37,7 +25,6 @@ const CartItem = (props) => {
           />
         </td>
       </tr>
-      {/* <p>Hello</p> */}
     </>
   );
 };

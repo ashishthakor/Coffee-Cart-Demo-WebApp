@@ -1,6 +1,6 @@
 import AuthContext from './AuthContext';
-import React, { useState, useEffect, useCallback, useContext } from 'react';
-
+import React, { useState, useContext } from 'react';
+import CartContext from './cartContext';
 const retrieveStoredData = () => {
   const storedToken = localStorage.getItem('token');
   const storedEmail = localStorage.getItem('email');
@@ -11,6 +11,7 @@ const retrieveStoredData = () => {
 };
 
 const AuthContextProvider = (props) => {
+  const cartCtx = useContext(CartContext);
   const tokenData = retrieveStoredData();
 
   let initialToken = '';
@@ -25,12 +26,15 @@ const AuthContextProvider = (props) => {
 
   const userIsLoggedIn = !!token && !!email;
 
-  const logoutHandler = useCallback(() => {
+  const logoutHandler = () => {
+    cartCtx.clearCartData();
+    console.log(cartCtx.items);
+
     setToken(null);
     localStorage.removeItem('token');
     setEmail('');
     localStorage.removeItem('email');
-  }, []);
+  };
 
   const loginHandler = (token, email) => {
     setToken(token);

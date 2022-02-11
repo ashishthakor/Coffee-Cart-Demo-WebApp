@@ -31,13 +31,9 @@ img {
 
 .itemHeading {
   width: inherit;
-  /* text-align: center; */
   font-family: 'National 2 Condensed';
-  /* font-style: normal; */
   font-weight: 700;
   font-size: 1rem;
-  /* line-height: 25px; */
-  /* letter-spacing: 0.4rem; */
   text-transform: uppercase;
   flex: 1;
 }
@@ -71,9 +67,7 @@ input:focus {
 .addToCart {
   color: white;
   display: flex;
-  /* background-color: #e85a4f; */
   background-color: #ff0000;
-  /* justify-content: center; */
   border-radius: 0.5rem;
   padding: 0 0.6rem;
   cursor: pointer;

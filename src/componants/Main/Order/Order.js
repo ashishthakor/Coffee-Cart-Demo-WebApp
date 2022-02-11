@@ -25,7 +25,7 @@ const Order = () => {
         }
         setIsLoading(false);
         const data = await res.json();
-        // console.log(data);
+
         setResponseData(data);
       } catch (e) {
         alert('Please check your connection');
@@ -41,7 +41,7 @@ const Order = () => {
   for (const key in responseData) {
     fetchedOrders.push({ id: key, ...responseData[key] });
   }
-  // console.log(fetchedOrders);
+
   fetchedOrders.map((order) => {
     console.log(order);
   });

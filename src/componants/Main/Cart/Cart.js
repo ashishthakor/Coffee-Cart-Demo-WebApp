@@ -12,7 +12,6 @@ const Cart = () => {
   const authCtx = useContext(AuthContext);
   const [placingOrder, setPlacingOrder] = useState(false);
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-  // cartCtx.items.map((item) => console.log(item));
 
   const itemAvailable = cartCtx.items.length > 0; //or we can also check totalAmount>0
 
@@ -20,7 +19,6 @@ const Cart = () => {
     console.log(item);
     item = { ...item, quantity: 1 };
     cartCtx.add(item);
-    // const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
   };
 
   const removeItemHandler = (id) => {
@@ -30,7 +28,7 @@ const Cart = () => {
     cartCtx.deleteIndivisualItem(item);
   };
   const orderData = {
-    email: localStorage.getItem('email'),
+    email: authCtx.email,
     orderDate: new Date().toLocaleDateString(),
     item: cartCtx.items,
   };
@@ -51,32 +49,15 @@ const Cart = () => {
     );
 
     if (!res.ok) {
-      console.log(res);
+      alert(`Error occure! ${res.message}`);
       return;
     }
     console.log('everything perfect');
 
-    const responseData = await res.json();
-    // console.log(responseData);
     cartCtx.clearCartData();
     setPlacingOrder(false);
     history.push('/order');
   };
-  // {
-  //   cartCtx.items.map((item) => {
-  //     // <CartItem
-  //     console.log(item.id);
-  //     console.log(item.name);
-  //     console.log(item.amount);
-  //     console.log(item.price);
-  //     // console.log(addItemHandler.bind(null, item));
-  //     // console.log(removeItemHandler.bind(null, item));
-  //     // />;
-  //     {
-  //       /* console.log(item); */
-  //     }
-  //   });
-  // }
 
   return (
     <>

@@ -4,12 +4,6 @@ import Item from './Item';
 import { useContext } from 'react';
 import CartContext from '../../../store/cartContext';
 const ItemList = (props) => {
-  // props.items.map((item) => {
-  //   console.log(item.id);
-  //   // console.log(item.name);
-  //   // console.log(item.price);
-  //   // console.log(item.recipe);
-  // });
   const cartCtx = useContext(CartContext);
   console.log(cartCtx);
   return (

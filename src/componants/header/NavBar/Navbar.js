@@ -15,7 +15,6 @@ const Navbar = () => {
 
   const logoutHandler = () => {
     authCtx.logout();
-    // optional: redirect the user
   };
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
