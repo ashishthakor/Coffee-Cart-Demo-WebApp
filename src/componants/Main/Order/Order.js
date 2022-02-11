@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import classes from './Order.module.css';
 import AuthContext from '../../../store/AuthContext';
+import { Spin, Space } from 'antd';
 
 const Order = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -53,9 +54,9 @@ const Order = () => {
         <br />
         <br />
         {isLoading && (
-          <b>
-            <h1>Loading Orders....</h1>
-          </b>
+          <Space size='middle'>
+            <Spin size='large' />
+          </Space>
         )}
         {!isLoading && (
           <section>

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { Popover, Button } from 'antd';
+import { Popover, Button, notification, message, Space } from 'antd';
+
 import { useRef, useState } from 'react';
 
 import { useContext } from 'react';
@@ -29,7 +30,20 @@ const Item = (props) => {
     </>
   );
 
+  const success = () => {
+    message.success(`${props.name} Item Added SuccessFully`);
+  };
+
+  const openNotificationWithIcon = (type, word) => {
+    if (type === 'warning') {
+      notification[type]({
+        message: `Item Quantity`,
+        description: `Please Enter Valid Quantity of ${word}`,
+      });
+    }
+  };
   const addToCartHandler = (quantity) => {
+    success();
     cartCtx.add({
       id: props.id,
       name: props.name,
@@ -45,7 +59,7 @@ const Item = (props) => {
     const enteredQuantity = +amountOfInput.current.value.trim();
 
     if (enteredQuantity < 1) {
-      alert('Please Enter Valid Anount of Quantity');
+      openNotificationWithIcon('warning', props.name);
       setAmountIsValid(false);
       return;
     }

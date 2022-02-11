@@ -6,6 +6,9 @@ import CartContext from '../../../store/cartContext';
 import CartItem from './CartItem';
 import AuthContext from '../../../store/AuthContext';
 import { useHistory } from 'react-router-dom';
+
+import { Spin, notification } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 const Cart = () => {
   const history = useHistory();
   const cartCtx = useContext(CartContext);
@@ -14,15 +17,24 @@ const Cart = () => {
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 
   const itemAvailable = cartCtx.items.length > 0; //or we can also check totalAmount>0
-
+  const openNotificationWithIcon = (type, word) => {
+    if (type === 'success') {
+      notification[type]({
+        message: `Cart Updated`,
+        description: `Cart Updated SuccessFully`,
+      });
+    }
+  };
   const addItemHandler = (item) => {
     console.log(item);
     item = { ...item, quantity: 1 };
     cartCtx.add(item);
+    openNotificationWithIcon(`success`);
   };
 
   const removeItemHandler = (id) => {
     cartCtx.remove(id);
+    openNotificationWithIcon(`success`);
   };
   const deleteItemHandler = (item) => {
     cartCtx.deleteIndivisualItem(item);
@@ -58,6 +70,8 @@ const Cart = () => {
     setPlacingOrder(false);
     history.push('/order');
   };
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 26 }} spin />;
 
   return (
     <>
@@ -96,13 +110,17 @@ const Cart = () => {
             </tbody>
           </table>
         </div>
-        <div className={`${classes.total} ${classes.order}`}>
-          {itemAvailable && !placingOrder && (
-            <span onClick={placeOrderHandler}>Place Order</span>
-          )}
-          {placingOrder && <p>Placing Order Please Wait...</p>}
-          {!itemAvailable && <p>No Coffee In your Cart</p>}
-        </div>
+        {placingOrder ? (
+          <Spin indicator={antIcon} />
+        ) : (
+          <div className={`${classes.total} ${classes.order}`}>
+            {itemAvailable && !placingOrder && (
+              <span onClick={placeOrderHandler}>Place Order</span>
+            )}
+
+            {!itemAvailable && <p>No Coffee In your Cart</p>}
+          </div>
+        )}
       </div>
     </>
   );
