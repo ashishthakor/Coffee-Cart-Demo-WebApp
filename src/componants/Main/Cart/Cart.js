@@ -1,13 +1,16 @@
 import React from 'react';
 import classes from './Cart.module.css';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import CartContext from '../../../store/cartContext';
 import CartItem from './CartItem';
-import { CloseOutlined } from '@ant-design/icons';
+import AuthContext from '../../../store/AuthContext';
+import { useHistory } from 'react-router-dom';
 const Cart = () => {
+  const history = useHistory();
   const cartCtx = useContext(CartContext);
-
+  const authCtx = useContext(AuthContext);
+  const [placingOrder, setPlacingOrder] = useState(false);
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   // cartCtx.items.map((item) => console.log(item));
 
@@ -26,7 +29,39 @@ const Cart = () => {
   const deleteItemHandler = (item) => {
     cartCtx.deleteIndivisualItem(item);
   };
+  const orderData = {
+    email: localStorage.getItem('email'),
+    orderDate: new Date().toLocaleDateString(),
+    item: cartCtx.items,
+  };
+  const placeOrderHandler = async () => {
+    console.log(orderData);
+    if (orderData.item === []) {
+      console.log('No Item Available');
+      return;
+    }
+    setPlacingOrder(true);
+    const res = await fetch(
+      `https://coffee-cart-demo-project-default-rtdb.firebaseio.com/order.json`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData),
+      }
+    );
 
+    if (!res.ok) {
+      console.log(res);
+      return;
+    }
+    console.log('everything perfect');
+
+    const responseData = await res.json();
+    // console.log(responseData);
+    cartCtx.clearCartData();
+    setPlacingOrder(false);
+    history.push('/order');
+  };
   // {
   //   cartCtx.items.map((item) => {
   //     // <CartItem
@@ -52,7 +87,7 @@ const Cart = () => {
           <span>{totalAmount}</span>
         </div>
         <div className={classes.list}>
-          <table class='table table-hover'>
+          <table className='table table-hover'>
             <thead>
               <tr>
                 <th scope='col'>ID</th>
@@ -81,7 +116,10 @@ const Cart = () => {
           </table>
         </div>
         <div className={`${classes.total} ${classes.order}`}>
-          {itemAvailable && <span>Place Order</span>}
+          {itemAvailable && !placingOrder && (
+            <span onClick={placeOrderHandler}>Place Order</span>
+          )}
+          {placingOrder && <p>Placing Order Please Wait...</p>}
           {!itemAvailable && <p>No Coffee In your Cart</p>}
         </div>
       </div>

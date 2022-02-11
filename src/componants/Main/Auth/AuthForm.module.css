@@ -7,6 +7,7 @@
   padding: 1rem;
   text-align: center;
   color: white;
+  transform: translate(0%, 0%);
 }
 
 .auth h1 {
@@ -77,4 +78,7 @@ input:focus {
   outline: none !important;
   border: 1px solid green;
   box-shadow: 0 0 10px #719ece;
+}
+p {
+  color: black;
 }

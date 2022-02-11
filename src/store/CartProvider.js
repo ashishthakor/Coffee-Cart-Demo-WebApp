@@ -71,6 +71,14 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
+  if (action.type === 'CLEAR-CART') {
+    localStorage.removeItem('cartItem');
+    localStorage.removeItem('totalAmount');
+    return {
+      items: [],
+      totalAmount: 0,
+    };
+  }
   return defaultCartState;
 };
 const CartProvider = (props) => {
@@ -88,6 +96,9 @@ const CartProvider = (props) => {
   const deleteItem = (item) => {
     dispatchCartAction({ type: 'DELETE-ITEM', payload: item });
   };
+  const clearCart = () => {
+    dispatchCartAction({ type: 'CLEAR-CART' });
+  };
 
   const cartContext = {
     items: cartState.items,
@@ -95,6 +106,7 @@ const CartProvider = (props) => {
     add: addItemToCart,
     remove: removeItemToCart,
     deleteIndivisualItem: deleteItem,
+    clearCartData: clearCart,
   };
   // localStorage.setItem('cartItem', cartContext.items);
   localStorage.setItem('cartItem', JSON.stringify(cartContext.items));
