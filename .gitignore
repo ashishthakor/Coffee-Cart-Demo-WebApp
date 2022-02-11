@@ -6,6 +6,10 @@
 .pnp.js
 
 playground
+build
+.firebase
+.firebaserc
+firebase.json
 # testing
 /coverage
 

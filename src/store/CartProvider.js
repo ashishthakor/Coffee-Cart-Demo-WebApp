@@ -3,8 +3,10 @@ import CartContext from './cartContext';
 import { useReducer } from 'react';
 
 const defaultCartState = {
-  items: JSON.parse(localStorage.getItem('cartItem')) || [],
-  totalAmount: parseInt(localStorage.getItem('totalAmount')) || 0,
+  // items: JSON.parse(localStorage.getItem('cartItem')) || [],
+  // totalAmount: parseInt(localStorage.getItem('totalAmount')) || 0,
+  items: [],
+  totalAmount: 0,
 };
 
 const cartReducer = (state, action) => {
@@ -71,8 +73,8 @@ const cartReducer = (state, action) => {
     };
   }
   if (action.type === 'CLEAR-CART') {
-    localStorage.removeItem('cartItem');
-    localStorage.removeItem('totalAmount');
+    // localStorage.removeItem('cartItem');
+    // localStorage.removeItem('totalAmount');
     return {
       items: [],
       totalAmount: 0,
@@ -108,8 +110,8 @@ const CartProvider = (props) => {
     clearCartData: clearCart,
   };
 
-  localStorage.setItem('cartItem', JSON.stringify(cartContext.items));
-  localStorage.setItem('totalAmount', cartContext.totalAmount);
+  // localStorage.setItem('cartItem', JSON.stringify(cartContext.items));
+  // localStorage.setItem('totalAmount', cartContext.totalAmount);
   return (
     <>
       <CartContext.Provider value={cartContext}>

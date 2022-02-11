@@ -27,9 +27,6 @@ const AuthContextProvider = (props) => {
   const userIsLoggedIn = !!token && !!email;
 
   const logoutHandler = () => {
-    cartCtx.clearCartData();
-    console.log(cartCtx.items);
-
     setToken(null);
     localStorage.removeItem('token');
     setEmail('');

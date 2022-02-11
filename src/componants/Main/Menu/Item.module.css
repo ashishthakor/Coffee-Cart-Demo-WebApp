@@ -31,7 +31,7 @@ img {
 
 .itemHeading {
   width: inherit;
-  font-family: 'National 2 Condensed';
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 1rem;
   text-transform: uppercase;
@@ -67,7 +67,7 @@ input:focus {
 .addToCart {
   color: white;
   display: flex;
-  background-color: #ff0000;
+  background-color: #c5321b;
   border-radius: 0.5rem;
   padding: 0 0.6rem;
   cursor: pointer;

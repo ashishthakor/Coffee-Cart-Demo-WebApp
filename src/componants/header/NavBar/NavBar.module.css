@@ -26,7 +26,7 @@ ul li {
 .links:hover {
   transition: ease 0.4s;
   color: white;
-  border-bottom: 0.5rem solid yellow;
+  border-bottom: 0.2rem solid yellow;
   /* border-radius: 1rem; */
 }
 .selected {
